@@ -793,13 +793,36 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
     // Initialize Lucide Icons
     lucide.createIcons();
     
-    // ==================== Theme Toggle ====================
+    // ==================== Theme Toggle with System Preference Detection ====================
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
     
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    // Function to detect system theme preference
+    function getSystemTheme() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    }
+    
+    // Check for saved theme preference, or detect from system, or default to dark
+    let savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+      savedTheme = getSystemTheme();
+      localStorage.setItem('theme', savedTheme);
+    }
     html.classList.toggle('dark', savedTheme === 'dark');
+    
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', (e) => {
+        // Only auto-switch if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+          html.classList.toggle('dark', e.matches);
+        }
+      });
+    }
     
     themeToggle.addEventListener('click', () => {
       html.classList.toggle('dark');
@@ -807,9 +830,27 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
     
-    // ==================== Language Toggle ====================
+    // ==================== Language Detection & Toggle ====================
     const langToggle = document.getElementById('langToggle');
-    let currentLang = localStorage.getItem('lang') || 'en';
+    
+    // Function to detect language from browser settings
+    function detectBrowserLanguage() {
+      // Get browser language
+      const browserLang = navigator.language || navigator.userLanguage;
+      // Check if it's Chinese (any variant)
+      if (browserLang && browserLang.toLowerCase().startsWith('zh')) {
+        return 'zh';
+      }
+      return 'en';
+    }
+    
+    // Get saved language or detect from browser
+    let currentLang = localStorage.getItem('lang');
+    if (!currentLang) {
+      currentLang = detectBrowserLanguage();
+      // Save the detected language
+      localStorage.setItem('lang', currentLang);
+    }
     
     // Translation data
     const translations = {
