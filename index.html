@@ -332,7 +332,7 @@
                 <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
               </div>
               <div>
-                <div class="text-sm font-medium text-slate-900 dark:text-white">Backtest Return</div>
+                <div class="text-sm font-medium text-slate-900 dark:text-white" data-i18n="hero.stats.backtestReturn">Backtest Return</div>
                 <div class="text-lg font-bold text-green-500">+32.7%</div>
               </div>
             </div>
@@ -344,7 +344,7 @@
                 <i data-lucide="zap" class="w-5 h-5 text-primary-500"></i>
               </div>
               <div>
-                <div class="text-sm font-medium text-slate-900 dark:text-white">Execution Speed</div>
+                <div class="text-sm font-medium text-slate-900 dark:text-white" data-i18n="hero.stats.executionSpeed">Execution Speed</div>
                 <div class="text-lg font-bold text-primary-500">&lt; 10ms</div>
               </div>
             </div>
@@ -374,7 +374,7 @@
           </div>
           <h3 class="text-xl font-semibold mb-2" data-i18n="features.backtesting.title">Strategy Backtesting</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.backtesting.description">
-            Multi-engine backtesting support with backtesting.py and vectorbt. Event-driven and vectorized modes for different use cases.
+            Self-developed high-performance backtesting engine with Numba JIT optimization. Supports both event-driven and vectorized execution modes for maximum flexibility.
           </p>
         </div>
         
@@ -448,7 +448,7 @@
               <div class="p-4 rounded-xl bg-primary-500/10 border border-primary-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="layout" class="w-5 h-5 text-primary-500"></i>
-                  <span class="font-semibold text-primary-700 dark:text-primary-300">Frontend Layer</span>
+                  <span class="font-semibold text-primary-700 dark:text-primary-300" data-i18n="architecture.layers.frontend">Frontend Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">React 18</span>
@@ -466,7 +466,7 @@
               <div class="p-4 rounded-xl bg-accent-500/10 border border-accent-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="server" class="w-5 h-5 text-accent-500"></i>
-                  <span class="font-semibold text-accent-700 dark:text-accent-300">API Layer</span>
+                  <span class="font-semibold text-accent-700 dark:text-accent-300" data-i18n="architecture.layers.api">API Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">FastAPI</span>
@@ -484,7 +484,7 @@
               <div class="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="cpu" class="w-5 h-5 text-green-500"></i>
-                  <span class="font-semibold text-green-700 dark:text-green-300">Business Logic</span>
+                  <span class="font-semibold text-green-700 dark:text-green-300" data-i18n="architecture.layers.business">Business Logic</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Strategy Engine</span>
@@ -502,7 +502,7 @@
               <div class="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="database" class="w-5 h-5 text-yellow-500"></i>
-                  <span class="font-semibold text-yellow-700 dark:text-yellow-300">Data Layer</span>
+                  <span class="font-semibold text-yellow-700 dark:text-yellow-300" data-i18n="architecture.layers.data">Data Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">SQLite</span>
@@ -529,7 +529,7 @@
               <div>
                 <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">Adapter Pattern</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.adapter.description">
-                  Strategy logic separated from backtest engines. Switch between backtesting.py and vectorbt effortlessly.
+                  Strategy logic separated from execution engines. Unified architecture supports both backtesting and live trading with the same codebase.
                 </p>
               </div>
             </div>
@@ -872,10 +872,12 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
         'hero.stats.downloads': 'Downloads',
         'hero.stats.stars': 'GitHub Stars',
         'hero.stats.contributors': 'Contributors',
+        'hero.stats.backtestReturn': 'Backtest Return',
+        'hero.stats.executionSpeed': 'Execution Speed',
         'features.title': 'Powerful Features for Quantitative Trading',
         'features.subtitle': 'Everything you need to develop, test, and deploy professional trading strategies',
         'features.backtesting.title': 'Strategy Backtesting',
-        'features.backtesting.description': 'Multi-engine backtesting support with backtesting.py and vectorbt. Event-driven and vectorized modes for different use cases.',
+        'features.backtesting.description': 'Self-developed high-performance backtesting engine with Numba JIT optimization. Supports both event-driven and vectorized execution modes for maximum flexibility.',
         'features.realtime.title': 'Real-time Market Data',
         'features.realtime.description': 'WebSocket-based real-time data streaming from multiple exchanges with automatic reconnection and data integrity checks.',
         'features.exchanges.title': 'Multi-Exchange Support',
@@ -889,11 +891,15 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
         'architecture.title': 'Modern Architecture',
         'architecture.description': 'Built with a clean separation of concerns, QuantCell\'s architecture enables rapid development, easy testing, and seamless deployment.',
         'architecture.points.adapter.title': 'Adapter Pattern',
-        'architecture.points.adapter.description': 'Strategy logic separated from backtest engines. Switch between backtesting.py and vectorbt effortlessly.',
+        'architecture.points.adapter.description': 'Strategy logic separated from execution engines. Unified architecture supports both backtesting and live trading with the same codebase.',
         'architecture.points.performance.title': 'High Performance',
         'architecture.points.performance.description': 'Built-in caching, parallel processing, and Numba optimization for maximum execution speed.',
         'architecture.points.extensible.title': 'Highly Extensible',
         'architecture.points.extensible.description': 'Rich hook functions and plugin system for customizing every aspect of your trading workflow.',
+        'architecture.layers.frontend': 'Frontend Layer',
+        'architecture.layers.api': 'API Layer',
+        'architecture.layers.business': 'Business Logic',
+        'architecture.layers.data': 'Data Layer',
         'code.title': 'Simple Yet Powerful',
         'code.subtitle': 'Write your strategy in pure Python. QuantCell handles the complexity.',
         'code.features.intuitive.title': 'Intuitive API',
@@ -935,10 +941,12 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
         'hero.stats.downloads': '下载量',
         'hero.stats.stars': 'GitHub 星标',
         'hero.stats.contributors': '贡献者',
+        'hero.stats.backtestReturn': '回测收益',
+        'hero.stats.executionSpeed': '执行速度',
         'features.title': '强大的量化交易功能',
         'features.subtitle': '开发、测试和部署专业交易策略所需的一切',
         'features.backtesting.title': '策略回测',
-        'features.backtesting.description': '支持 backtesting.py 和 vectorbt 的多引擎回测。事件驱动和向量化模式适用于不同场景。',
+        'features.backtesting.description': '自主研发的高性能回测引擎，采用 Numba JIT 编译优化。支持事件驱动和向量化双模式，灵活应对不同场景。',
         'features.realtime.title': '实时市场数据',
         'features.realtime.description': '基于 WebSocket 的多交易所实时数据流，支持自动重连和数据完整性检查。',
         'features.exchanges.title': '多交易所支持',
@@ -952,11 +960,15 @@ results = runner.run(data, initial_cash=<span class="text-green-300">10000</span
         'architecture.title': '现代架构',
         'architecture.description': 'QuantCell 采用清晰的关注点分离设计，支持快速开发、轻松测试和无缝部署。',
         'architecture.points.adapter.title': '适配器模式',
-        'architecture.points.adapter.description': '策略逻辑与回测引擎分离。在 backtesting.py 和 vectorbt 之间轻松切换。',
+        'architecture.points.adapter.description': '策略逻辑与执行引擎分离。统一架构支持同一套代码进行回测和实盘交易。',
         'architecture.points.performance.title': '高性能',
         'architecture.points.performance.description': '内置缓存、并行处理和 Numba 优化，实现最大执行速度。',
         'architecture.points.extensible.title': '高度可扩展',
         'architecture.points.extensible.description': '丰富的钩子函数和插件系统，可自定义交易工作流的各个方面。',
+        'architecture.layers.frontend': '前端层',
+        'architecture.layers.api': 'API 层',
+        'architecture.layers.business': '业务逻辑层',
+        'architecture.layers.data': '数据层',
         'code.title': '简单而强大',
         'code.subtitle': '用纯 Python 编写策略。QuantCell 处理复杂性。',
         'code.features.intuitive.title': '直观的 API',
