@@ -255,13 +255,13 @@
             <span data-i18n="hero.badge">Open Source Quantitative Trading Platform</span>
           </div>
           
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight pb-2">
             <span data-i18n="hero.title1">Build, Test, and Deploy</span>
-            <span class="text-gradient block mt-2" data-i18n="hero.title2">Trading Strategies</span>
+            <span class="text-gradient block mt-2 pb-1" data-i18n="hero.title2">Trading Strategies</span>
           </h1>
           
           <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl" data-i18n="hero.description">
-            QuantCell is a comprehensive quantitative trading platform featuring strategy backtesting, real-time market data, multi-exchange support, and advanced risk management tools.
+            QuantCell is a professional quantitative trading platform with high-performance backtesting, real-time market data, AI-powered strategy generation, and unified multi-exchange trading. Write strategies in pure Python with an intuitive API, run lightning-fast backtests, and deploy to production seamlessly.
           </p>
           
           <div class="flex flex-wrap gap-4">
@@ -298,31 +298,41 @@
         <div class="relative">
           <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
             <div class="code-block">
-              <div class="code-header">
-                <div class="code-dot bg-red-500"></div>
-                <div class="code-dot bg-yellow-500"></div>
-                <div class="code-dot bg-green-500"></div>
-                <span class="ml-4 text-sm text-slate-400">strategy.py</span>
-              </div>
-              <div class="code-content text-slate-300">
-                <pre><span class="text-purple-400">class</span> <span class="text-yellow-300">SMAStrategy</span>(<span class="text-yellow-300">StrategyCore</span>):
-    <span class="text-slate-500">"""Simple Moving Average Cross Strategy"""</span>
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">calculate_indicators</span>(<span class="text-orange-300">self</span>, data):
-        <span class="text-slate-500"># Calculate fast and slow SMA</span>
-        sma_fast = <span class="text-orange-300">self</span>.calculate_sma(data, <span class="text-green-300">10</span>)
-        sma_slow = <span class="text-orange-300">self</span>.calculate_sma(data, <span class="text-green-300">30</span>)
-        <span class="text-purple-400">return</span> {<span class="text-green-300">'fast'</span>: sma_fast, <span class="text-green-300">'slow'</span>: sma_slow}
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">generate_signals</span>(<span class="text-orange-300">self</span>, indicators):
-        <span class="text-slate-500"># Generate buy/sell signals</span>
-        <span class="text-purple-400">if</span> indicators[<span class="text-green-300">'fast'</span>] > indicators[<span class="text-green-300">'slow'</span>]:
-            <span class="text-purple-400">return</span> <span class="text-green-300">'buy'</span>
-        <span class="text-purple-400">elif</span> indicators[<span class="text-green-300">'fast'</span>] < indicators[<span class="text-green-300">'slow'</span>]:
-            <span class="text-purple-400">return</span> <span class="text-green-300">'sell'</span>
-        <span class="text-purple-400">return</span> <span class="text-green-300">None</span></pre>
-              </div>
+            <div class="code-header">
+              <div class="code-dot bg-red-500"></div>
+              <div class="code-dot bg-yellow-500"></div>
+              <div class="code-dot bg-green-500"></div>
+              <span class="ml-4 text-sm text-slate-400">sma_cross_simple.py</span>
             </div>
+            <div class="code-content text-slate-300">
+              <pre><span class="text-purple-400">from</span> strategy.core <span class="text-purple-400">import</span> Strategy, StrategyConfig
+
+<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossConfig</span>(<span class="text-yellow-300">StrategyConfig</span>):
+    <span class="text-slate-500">"""SMA Cross Strategy Configuration"""</span>
+    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>):
+        <span class="text-orange-300">self</span>.fast_period = <span class="text-green-300">10</span>
+        <span class="text-orange-300">self</span>.slow_period = <span class="text-green-300">30</span>
+
+<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossStrategy</span>(<span class="text-yellow-300">Strategy</span>):
+    <span class="text-slate-500">"""Dual SMA Cross Strategy"""</span>
+    
+    <span class="text-purple-400">def</span> <span class="text-blue-400">on_bar</span>(<span class="text-orange-300">self</span>, bar):
+        <span class="text-slate-500"># Update price history</span>
+        <span class="text-orange-300">self</span>.prices.append(bar.close)
+        
+        <span class="text-slate-500"># Calculate SMA</span>
+        fast_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>.fast_period)
+        slow_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>.slow_period)
+        
+        <span class="text-slate-500"># Golden cross: buy signal</span>
+        <span class="text-purple-400">if</span> fast_sma > slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_flat():
+            <span class="text-orange-300">self</span>.buy(<span class="text-orange-300">self</span>.config.trade_size)
+        
+        <span class="text-slate-500"># Death cross: sell signal</span>
+        <span class="text-purple-400">elif</span> fast_sma < slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_long():
+            <span class="text-orange-300">self</span>.sell(<span class="text-orange-300">self</span>.config.trade_size)</pre>
+            </div>
+          </div>
           </div>
           
           <!-- Floating Elements -->
@@ -367,69 +377,69 @@
       
       <!-- Feature Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Feature 1: Strategy Backtesting -->
+        <!-- Feature 1: High-Performance Backtesting -->
         <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
           <div class="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center mb-4">
             <i data-lucide="history" class="w-6 h-6 text-primary-500"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.backtesting.title">Strategy Backtesting</h3>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.backtesting.title">High-Performance Backtesting</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.backtesting.description">
-            Self-developed high-performance backtesting engine with Numba JIT optimization. Supports both event-driven and vectorized execution modes for maximum flexibility.
+            Self-developed high-performance backtesting engine supporting both event-driven and vectorized execution modes. Intelligent caching and parallel processing for maximum speed.
           </p>
         </div>
-        
-        <!-- Feature 2: Real-time Data -->
+
+        <!-- Feature 2: AI Strategy Generation -->
         <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
           <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="radio" class="w-6 h-6 text-accent-500"></i>
+            <i data-lucide="sparkles" class="w-6 h-6 text-accent-500"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.ai.title">AI Strategy Generation</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.ai.description">
+            AI-powered strategy generation with thinking chain support. Automatically generate, validate, and optimize trading strategies using large language models.
+          </p>
+        </div>
+
+        <!-- Feature 3: Real-time Market Data -->
+        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="radio" class="w-6 h-6 text-green-500"></i>
           </div>
           <h3 class="text-xl font-semibold mb-2" data-i18n="features.realtime.title">Real-time Market Data</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.realtime.description">
-            WebSocket-based real-time data streaming from multiple exchanges with automatic reconnection and data integrity checks.
+            WebSocket-based real-time data streaming with automatic reconnection. Support for multiple data sources and historical data management.
           </p>
         </div>
-        
-        <!-- Feature 3: Multi-Exchange -->
+
+        <!-- Feature 4: Unified Exchange Trading -->
         <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="globe" class="w-6 h-6 text-green-500"></i>
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="globe" class="w-6 h-6 text-blue-500"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.exchanges.title">Multi-Exchange Support</h3>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.exchanges.title">Unified Exchange Trading</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.exchanges.description">
-            Unified API for Binance, OKX, and more. Seamlessly switch between exchanges with consistent interface.
+            Unified API for Binance, OKX, and more. Seamlessly switch between exchanges with consistent interface for both backtesting and live trading.
           </p>
         </div>
-        
-        <!-- Feature 4: Risk Management -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="shield" class="w-6 h-6 text-red-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.risk.title">Risk Management</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.risk.description">
-            Comprehensive risk controls including position sizing, stop-loss, take-profit, and portfolio-level risk monitoring.
-          </p>
-        </div>
-        
-        <!-- Feature 5: Visualization -->
+
+        <!-- Feature 5: Advanced Visualization -->
         <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4">
             <i data-lucide="bar-chart-3" class="w-6 h-6 text-yellow-500"></i>
           </div>
           <h3 class="text-xl font-semibold mb-2" data-i18n="features.visualization.title">Advanced Visualization</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.visualization.description">
-            Professional K-line charts with technical indicators, trade markers, and backtest replay functionality.
+            Professional K-line charts with technical indicators, trade markers, backtest replay, and comprehensive performance analysis dashboards.
           </p>
         </div>
-        
-        <!-- Feature 6: Plugin System -->
+
+        <!-- Feature 6: Risk Management -->
         <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="puzzle" class="w-6 h-6 text-purple-500"></i>
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="shield" class="w-6 h-6 text-red-500"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.plugins.title">Extensible Plugin System</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.plugins.description">
-            Modular architecture with plugin support. Easily extend functionality with custom indicators, strategies, and data sources.
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.risk.title">Risk Management</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.risk.description">
+            Comprehensive risk controls with position sizing, stop-loss, take-profit, and portfolio-level risk monitoring for safer trading.
           </p>
         </div>
       </div>
@@ -518,22 +528,22 @@
         <div class="order-1 lg:order-2 space-y-6">
           <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="architecture.title">Modern Architecture</h2>
           <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="architecture.description">
-            Built with a clean separation of concerns, QuantCell's architecture enables rapid development, easy testing, and seamless deployment.
+            Clean separation of concerns with adapter pattern design. Use the same strategy code for both backtesting and live trading across multiple exchanges.
           </p>
-          
+
           <div class="space-y-4">
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">Adapter Pattern</h4>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">Unified Execution</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.adapter.description">
-                  Strategy logic separated from execution engines. Unified architecture supports both backtesting and live trading with the same codebase.
+                  Strategy core separated from execution engines. Seamlessly switch between backtesting and live trading with the same strategy code.
                 </p>
               </div>
             </div>
-            
+
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
@@ -541,19 +551,19 @@
               <div>
                 <h4 class="font-semibold mb-1" data-i18n="architecture.points.performance.title">High Performance</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.performance.description">
-                  Built-in caching, parallel processing, and Numba optimization for maximum execution speed.
+                  Self-developed execution engine with intelligent caching and parallel processing for lightning-fast backtests and real-time trading.
                 </p>
               </div>
             </div>
-            
+
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.extensible.title">Highly Extensible</h4>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.extensible.title">AI-Powered Extension</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.extensible.description">
-                  Rich hook functions and plugin system for customizing every aspect of your trading workflow.
+                  Rich hook functions for customization plus AI strategy generation with thinking chain support for automated strategy development.
                 </p>
               </div>
             </div>
@@ -580,34 +590,36 @@
             <div class="code-dot bg-red-500"></div>
             <div class="code-dot bg-yellow-500"></div>
             <div class="code-dot bg-green-500"></div>
-            <span class="ml-4 text-sm text-slate-400">sma_strategy.py</span>
+            <span class="ml-4 text-sm text-slate-400">sma_cross_simple.py</span>
           </div>
           <div class="code-content text-slate-300">
-            <pre><span class="text-purple-400">from</span> quantcell.strategy <span class="text-purple-400">import</span> StrategyCore
-<span class="text-purple-400">from</span> quantcell.backtest <span class="text-purple-400">import</span> StrategyRunner
+            <pre><span class="text-purple-400">from</span> strategy.core <span class="text-purple-400">import</span> Strategy, StrategyConfig
 
-<span class="text-purple-400">class</span> <span class="text-yellow-300">SMAStrategy</span>(<span class="text-yellow-300">StrategyCore</span>):
-    <span class="text-slate-500">"""Dual SMA Cross Strategy"""</span>
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>):
+<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossConfig</span>(<span class="text-yellow-300">StrategyConfig</span>):
+    <span class="text-slate-500">"""SMA Cross Strategy Config"""</span>
+    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>, instrument_ids, bar_types):
+        <span class="text-orange-300">super</span>().<span class="text-blue-400">__init__</span>(instrument_ids, bar_types)
         <span class="text-orange-300">self</span>.fast_period = <span class="text-green-300">10</span>
         <span class="text-orange-300">self</span>.slow_period = <span class="text-green-300">30</span>
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">calculate_indicators</span>(<span class="text-orange-300">self</span>, data):
-        <span class="text-purple-400">return</span> {
-            <span class="text-green-300">'sma_fast'</span>: data.close.rolling(<span class="text-orange-300">self</span>.fast_period).mean(),
-            <span class="text-green-300">'sma_slow'</span>: data.close.rolling(<span class="text-orange-300">self</span>.slow_period).mean()
-        }
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">generate_signals</span>(<span class="text-orange-300">self</span>, indicators):
-        <span class="text-purple-400">if</span> indicators[<span class="text-green-300">'sma_fast'</span>] > indicators[<span class="text-green-300">'sma_slow'</span>]:
-            <span class="text-purple-400">return</span> <span class="text-green-300">'buy'</span>
-        <span class="text-purple-400">return</span> <span class="text-green-300">'sell'</span>
 
-<span class="text-slate-500"># Run backtest</span>
-runner = StrategyRunner(SMAStrategy())
-results = runner.run(data, initial_cash=<span class="text-green-300">10000</span>)
-<span class="text-purple-400">print</span>(<span class="text-green-300">f"Return: {results.return_pct:.2f}%"</span>)</pre>
+<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossStrategy</span>(<span class="text-yellow-300">Strategy</span>):
+    <span class="text-slate-500">"""Dual SMA Cross Strategy"""</span>
+    
+    <span class="text-purple-400">def</span> <span class="text-blue-400">on_bar</span>(<span class="text-orange-300">self</span>, bar):
+        <span class="text-slate-500"># Update price history</span>
+        <span class="text-orange-300">self</span>.prices.append(bar.close)
+        
+        <span class="text-slate-500"># Calculate SMA values</span>
+        fast_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>._config.fast_period)
+        slow_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>._config.slow_period)
+        
+        <span class="text-slate-500"># Golden cross: buy signal</span>
+        <span class="text-purple-400">if</span> fast_sma > slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_flat():
+            <span class="text-orange-300">self</span>.buy(bar.instrument_id, <span class="text-orange-300">self</span>._config.trade_size)
+        
+        <span class="text-slate-500"># Death cross: sell signal</span>
+        <span class="text-purple-400">elif</span> fast_sma < slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_long():
+            <span class="text-orange-300">self</span>.sell(bar.instrument_id, <span class="text-orange-300">self</span>._config.trade_size)</pre>
           </div>
         </div>
         
