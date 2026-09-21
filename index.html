@@ -619,7 +619,7 @@
             <h3 class="text-lg font-semibold" data-i18n="quickstart.step1.title">Install with one command</h3>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step1.description">Clone the repo and run the installer. It provisions the uv and bun toolchains plus the frontend and backend environments (--minimal / --full / --extra).</p>
-          <div class="code-block ml-11">
+          <div class="code-block sm:ml-11">
             <div class="code-content">
               <pre>git clone https://github.com/pengwow/quantcell.git
 cd quantcell
@@ -635,7 +635,7 @@ bash install.sh   <span class="text-slate-500"># --minimal / --full / --extra，
             <h3 class="text-lg font-semibold" data-i18n="quickstart.step2.title">Generate and backtest via CLI</h3>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step2.description">Turn a natural-language requirement into a strategy, then run an event-driven backtest with a single command.</p>
-          <div class="code-block ml-11">
+          <div class="code-block sm:ml-11">
             <div class="code-content">
               <pre>quantcell strategy generate --requirement <span class="text-green-300">"双均线金叉买入"</span> --name dual_ma
 quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 100000</pre>
@@ -650,7 +650,7 @@ quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 10000
             <h3 class="text-lg font-semibold" data-i18n="quickstart.step3.title">Write strategies in Python</h3>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step3.description">Receive bars in on_bar and return a unified axon_quant Action. The same code runs in backtests and live trading.</p>
-          <div class="code-block ml-11">
+          <div class="code-block sm:ml-11">
             <div class="code-content">
 <pre><span class="text-purple-400">from</span> axon_quant <span class="text-purple-400">import</span> Action, ActionType
 
