@@ -470,11 +470,10 @@
   <section id="architecture" class="py-20 lg:py-32 bg-slate-100 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Architecture Visual -->
+        <!-- 架构图：五层 -->
         <div class="order-2 lg:order-1">
           <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-            <div class="p-6 space-y-4">
-              <!-- Layer 1: Frontend -->
+            <div class="p-6 space-y-3">
               <div class="p-4 rounded-xl bg-primary-500/10 border border-primary-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="layout" class="w-5 h-5 text-primary-500"></i>
@@ -483,16 +482,17 @@
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">React 18</span>
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">TypeScript</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">KlineCharts</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Vite 7</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Ant Design 6</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">KLineCharts / ECharts</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Zustand</span>
                 </div>
               </div>
-              
-              <!-- Arrow -->
+
               <div class="flex justify-center">
                 <i data-lucide="arrow-down" class="w-5 h-5 text-slate-400"></i>
               </div>
-              
-              <!-- Layer 2: API -->
+
               <div class="p-4 rounded-xl bg-accent-500/10 border border-accent-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="server" class="w-5 h-5 text-accent-500"></i>
@@ -500,91 +500,101 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">FastAPI</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">WebSocket</span>
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">RESTful</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">WebSocket</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">JWT</span>
                 </div>
               </div>
-              
-              <!-- Arrow -->
+
               <div class="flex justify-center">
                 <i data-lucide="arrow-down" class="w-5 h-5 text-slate-400"></i>
               </div>
-              
-              <!-- Layer 3: Business Logic -->
+
               <div class="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="cpu" class="w-5 h-5 text-green-500"></i>
-                  <span class="font-semibold text-green-700 dark:text-green-300" data-i18n="architecture.layers.business">Business Logic</span>
+                  <span class="font-semibold text-green-700 dark:text-green-300" data-i18n="architecture.layers.business">Business Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Strategy Engine</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Backtesting</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Risk Manager</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Strategy &amp; Backtest</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">AI Agent</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Reinforcement Learning</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Realtime Trading</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Data Collector</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Plugins</span>
                 </div>
               </div>
-              
-              <!-- Arrow -->
+
               <div class="flex justify-center">
                 <i data-lucide="arrow-down" class="w-5 h-5 text-slate-400"></i>
               </div>
-              
-              <!-- Layer 4: Data -->
+
+              <div class="p-4 rounded-xl bg-orange-500/10 border-2 border-orange-500/40 relative">
+                <span class="absolute top-3 right-3 px-2 py-0.5 rounded bg-orange-500 text-white text-[10px] font-bold tracking-wide">Rust</span>
+                <div class="flex items-center gap-3 mb-3">
+                  <i data-lucide="cog" class="w-5 h-5 text-orange-500"></i>
+                  <span class="font-semibold text-orange-700 dark:text-orange-300" data-i18n="architecture.layers.engine">Rust Engine Layer</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs font-mono">axon-quant 0.14.5</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Event-Driven Matching</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Risk Engine</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">OMS</span>
+                </div>
+              </div>
+
+              <div class="flex justify-center">
+                <i data-lucide="arrow-down" class="w-5 h-5 text-slate-400"></i>
+              </div>
+
               <div class="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
                 <div class="flex items-center gap-3 mb-3">
                   <i data-lucide="database" class="w-5 h-5 text-yellow-500"></i>
                   <span class="font-semibold text-yellow-700 dark:text-yellow-300" data-i18n="architecture.layers.data">Data Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">SQLite</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">SQLAlchemy</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Alembic</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">DuckDB</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Parquet</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">PyArrow</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">SQLAlchemy / Alembic</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Binance / OKX</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <!-- Architecture Content -->
+
+        <!-- 架构说明 -->
         <div class="order-1 lg:order-2 space-y-6">
-          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="architecture.title">Modern Architecture</h2>
-          <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="architecture.description">
-            Refactored architecture with StrategyCore, StrategyAdapter, and StrategyRunner pattern. Strategy logic separated from execution engines for maximum flexibility.
-          </p>
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="architecture.title">System Architecture</h2>
+          <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="architecture.description">React/TypeScript on the frontend, FastAPI services, and the axon-quant Rust trading core — decoupled through axon_bridge, covering strategy development, backtest validation, and live deployment.</p>
 
           <div class="space-y-4">
             <div class="flex gap-4">
-              <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
+              <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">StrategyCore Pattern</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.adapter.description">
-                  Strategy logic separated from execution engines. Define indicators, signals, and position management in StrategyCore, run on any engine.
-                </p>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.engine.title">Rust Core Engine</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.engine.description">Identical matching semantics in backtest and live trading; conformance contract tests protect every engine upgrade.</p>
               </div>
             </div>
-
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="check" class="w-4 h-4 text-accent-500"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.ai.title">AI-Native Loop</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.ai.description">Natural language → code generation → safety checks → backtest verification → deployment.</p>
+              </div>
+            </div>
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.performance.title">Multi-Engine Support</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.performance.description">
-                  Adapter pattern enables seamless switching between multiple backtesting engines. Single strategy code runs everywhere.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-4">
-              <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.extensible.title">Rich Hook System</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.extensible.description">
-                  Pre/post processing hooks for data, signals, and positions. Customize strategy behavior without modifying core code.
-                </p>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.bridge.title">axon_bridge Decoupling</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.bridge.description">The Python business layer and the Rust engine stay decoupled — one strategy codebase runs in both backtests and live trading.</p>
               </div>
             </div>
           </div>
