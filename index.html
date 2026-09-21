@@ -135,18 +135,48 @@
       box-shadow: 0 0 20px rgba(14, 165, 233, 0.3), 0 0 40px rgba(139, 92, 246, 0.2);
     }
     
-    /* Code Block Styling */
+    /* Code Block Styling：颜色全部走 CSS 变量，浅/深主题只改变量，避免写死深色 */
+    :root {
+      --code-bg: #f8fafc;
+      --code-header-bg: #f1f5f9;
+      --code-border: #e2e8f0;
+      --code-fg: #0f172a;
+      --code-muted: #64748b;
+      --code-comment: #64748b;
+      /* 浅色主题下的语法高亮：用加深色板保证浅底可读 */
+      --code-purple: #7c3aed;
+      --code-yellow: #a16207;
+      --code-blue: #2563eb;
+      --code-orange: #c2410c;
+      --code-green: #15803d;
+    }
+    .dark {
+      --code-bg: #1e293b;
+      --code-header-bg: #0f172a;
+      --code-border: rgba(148, 163, 184, 0.2);
+      --code-fg: #e2e8f0;
+      --code-muted: #94a3b8;
+      --code-comment: #64748b;
+      --code-purple: #c084fc;
+      --code-yellow: #fde047;
+      --code-blue: #60a5fa;
+      --code-orange: #fdba74;
+      --code-green: #86efac;
+    }
     .code-block {
-      background: #1e293b;
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
       border-radius: 12px;
       overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
     .code-header {
-      background: #0f172a;
+      background: var(--code-header-bg);
       padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 8px;
+      transition: background-color 0.3s ease;
     }
     .code-dot {
       width: 12px;
@@ -158,8 +188,20 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 14px;
       line-height: 1.6;
+      color: var(--code-fg);
       overflow-x: auto;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+    /* 语法高亮覆盖 Tailwind 固定色（特异性 0,2,0 胜过工具类），随变量切换 */
+    .code-content .text-purple-400 { color: var(--code-purple); }
+    .code-content .text-yellow-300 { color: var(--code-yellow); }
+    .code-content .text-blue-400 { color: var(--code-blue); }
+    .code-content .text-orange-300 { color: var(--code-orange); }
+    .code-content .text-green-300 { color: var(--code-green); }
+    .code-content .text-slate-500 { color: var(--code-comment); }
+    /* Hero 代码窗正文挂了固定的 text-slate-300，收敛到变量色 */
+    .code-block .code-content.text-slate-300 { color: var(--code-fg); }
+    .code-header .text-slate-400 { color: var(--code-muted); }
     
     /* Feature Card Hover */
     .feature-card {
@@ -299,7 +341,7 @@
             </div>
             <div class="code-content text-slate-300">
               <pre><span class="text-slate-500">$ </span>quantcell strategy generate \
-    --requirement <span class="text-green-300">"双均线金叉买入、死叉卖出"</span> \
+    --requirement <span class="text-green-300" data-i18n="hero.code.requirement">"Golden cross buy, death cross sell"</span> \
     --name <span class="text-green-300">dual_ma</span></pre>
             </div>
           </div>
@@ -623,7 +665,7 @@
             <div class="code-content">
               <pre>git clone https://github.com/pengwow/quantcell.git
 cd quantcell
-bash install.sh   <span class="text-slate-500"># --minimal / --full / --extra，自动配置 uv + bun</span></pre>
+bash install.sh   <span class="text-slate-500" data-i18n="quickstart.code.install"># --minimal / --full / --extra, auto-configures uv + bun</span></pre>
             </div>
           </div>
         </div>
@@ -637,7 +679,7 @@ bash install.sh   <span class="text-slate-500"># --minimal / --full / --extra，
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step2.description">Turn a natural-language requirement into a strategy, then run an event-driven backtest with a single command.</p>
           <div class="code-block sm:ml-11">
             <div class="code-content">
-              <pre>quantcell strategy generate --requirement <span class="text-green-300">"双均线金叉买入"</span> --name dual_ma
+              <pre>quantcell strategy generate --requirement <span class="text-green-300" data-i18n="quickstart.code.requirement">"golden cross buy"</span> --name dual_ma
 quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 100000</pre>
             </div>
           </div>
