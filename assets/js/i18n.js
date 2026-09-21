@@ -6,6 +6,8 @@
 const STORAGE_KEY = 'lang';
 const TRANSLATIONS_PATH = '/assets/i18n/translations.json';
 const I18N_ATTRIBUTE = 'data-i18n';
+// 属性翻译约定：data-i18n-attr="aria-label:nav.toggleTheme,alt:common.logoAlt"
+const I18N_ATTR_ATTRIBUTE = 'data-i18n-attr';
 
 /**
  * Detect language from browser settings
@@ -63,7 +65,18 @@ function updateLanguage(translations, lang) {
       el.textContent = translations[lang][key];
     }
   });
-  
+
+  // 属性翻译（alt / aria-label / placeholder / title 等）
+  const attrElements = document.querySelectorAll(`[${I18N_ATTR_ATTRIBUTE}]`);
+  attrElements.forEach(el => {
+    el.getAttribute(I18N_ATTR_ATTRIBUTE).split(',').forEach(pair => {
+      const [attr, key] = pair.split(':').map(s => s && s.trim());
+      if (attr && key && translations[lang] && translations[lang][key]) {
+        el.setAttribute(attr, translations[lang][key]);
+      }
+    });
+  });
+
   // Update HTML lang attribute
   document.documentElement.setAttribute('lang', lang);
 }

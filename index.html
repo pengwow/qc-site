@@ -233,7 +233,7 @@
         </a>
         -->
         <a href="#" class="flex items-center gap-2">
-          <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8">
+          <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8" data-i18n-attr="alt:common.logoAlt">
           <span class="text-xl font-bold text-gradient">QuantCell</span>
         </a>
         
@@ -249,12 +249,12 @@
         <!-- Right Actions -->
         <div class="flex items-center gap-3">
           <!-- Language Toggle -->
-          <button id="langToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Language">
+          <button id="langToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Language" data-i18n-attr="aria-label:nav.toggleLang">
             <span class="text-sm font-medium">中文</span>
           </button>
           
           <!-- Theme Toggle -->
-          <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme">
+          <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme" data-i18n-attr="aria-label:nav.toggleTheme">
             <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
             <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
           </button>
@@ -266,7 +266,7 @@
           </a>
           
           <!-- Mobile Menu Button -->
-          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Menu" data-i18n-attr="aria-label:nav.toggleMenu">
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
         </div>
@@ -558,12 +558,12 @@
                   <span class="font-semibold text-green-700 dark:text-green-300" data-i18n="architecture.layers.business">Business Layer</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Strategy &amp; Backtest</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">AI Agent</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Reinforcement Learning</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Realtime Trading</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Data Collector</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Plugins</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.strategy">Strategy &amp; Backtest</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.agent">AI Agent</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.rl">Reinforcement Learning</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.realtime">Realtime Trading</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.collector">Data Collector</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.plugins">Plugins</span>
                 </div>
               </div>
 
@@ -579,8 +579,8 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs font-mono">axon-quant 0.14.5</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Event-Driven Matching</span>
-                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">Risk Engine</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.matching">Event-Driven Matching</span>
+                  <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs" data-i18n="architecture.tag.risk">Risk Engine</span>
                   <span class="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs">OMS</span>
                 </div>
               </div>
@@ -742,7 +742,7 @@ quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 10000
             <i data-lucide="github" class="w-6 h-6 text-white dark:text-slate-900"></i>
           </div>
           <h3 class="font-semibold mb-1">GitHub</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Star &amp; Fork</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="opensource.githubDesc">Star &amp; Fork</p>
         </a>
 
         <!-- Gitee Card -->
@@ -782,7 +782,7 @@ quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 10000
         <!-- Brand -->
         <div class="md:col-span-2">
           <a href="#" class="flex items-center gap-2 mb-4">
-            <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8">
+            <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8" data-i18n-attr="alt:common.logoAlt">
             <span class="text-xl font-bold text-gradient">QuantCell</span>
           </a>
           <p class="text-slate-600 dark:text-slate-400 text-sm mb-4" data-i18n="footer.description">
@@ -792,7 +792,7 @@ quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 10000
             <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" aria-label="GitHub">
               <i data-lucide="github" class="w-5 h-5"></i>
             </a>
-            <a href="mailto:pengwow@hotmail.com" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" aria-label="Email">
+            <a href="mailto:pengwow@hotmail.com" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" aria-label="Email" data-i18n-attr="aria-label:opensource.email">
               <i data-lucide="mail" class="w-5 h-5"></i>
             </a>
           </div>
