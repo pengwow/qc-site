@@ -337,113 +337,130 @@
   <!-- Features Section -->
   <section id="features" class="py-20 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="features.title">Powerful Features for Quantitative Trading</h2>
-        <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="features.subtitle">
-          Everything you need to develop, test, and deploy professional trading strategies
-        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="features.title">Everything for AI-Native Quant Trading</h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="features.subtitle">From natural-language strategy ideas to Rust-powered backtesting and live deployment</p>
       </div>
-      
-      <!-- Feature Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Feature 1: High-Performance Backtesting -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="history" class="w-6 h-6 text-primary-500"></i>
+
+      <div class="space-y-14">
+        <!-- 组一：AI 智能 -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-6 flex items-center gap-2">
+            <span class="text-base">🤖</span><span data-i18n="features.group.ai">AI Intelligence</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="sparkles" class="w-6 h-6 text-accent-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.nlgen.title">Natural-Language Strategy Generation</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.nlgen.description">Describe a trading idea in plain language and get executable strategy code automatically. Thinking-chain reasoning is explainable and traceable, with built-in code quality and safety checks.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="bot" class="w-6 h-6 text-violet-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.agent.title">AI Agent</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.agent.description">An AI agent with long-term memory, tool calling, and built-in skills (news analysis, technical analysis) for multi-turn conversations and operation orchestration.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="calculator" class="w-6 h-6 text-pink-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.indicator.title">Custom Indicators with AI</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.indicator.description">Write indicator code in the browser; the LLM diagnoses errors in the code and fixes them automatically.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.backtesting.title">High-Performance Backtesting</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.backtesting.description">
-            Fully refactored high-performance backtesting engine supporting both event-driven and vectorized execution modes. Intelligent caching and parallel processing for maximum speed.
-          </p>
         </div>
 
-        <!-- Feature 2: AI Strategy Generation -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="sparkles" class="w-6 h-6 text-accent-500"></i>
+        <!-- 组二：Rust 引擎与回测 -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-6 flex items-center gap-2">
+            <span class="text-base">⚡</span><span data-i18n="features.group.engine">Rust Engine &amp; Backtesting</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="history" class="w-6 h-6 text-primary-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.backtest.title">Event-Driven Backtesting</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.backtest.description">Powered by the axon-quant Rust core, with K-line, Tick, OrderBook, and Deriv data adapters. Backtests and live trading share identical matching semantics, guarded by conformance contract tests.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="sliders-horizontal" class="w-6 h-6 text-cyan-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.hpo.title">Walk-Forward &amp; Hyperparameter Optimization</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.hpo.description">Rolling-window validation prevents overfitting. Built-in Optuna HPO with TPE sampling and median pruning.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="network" class="w-6 h-6 text-indigo-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.rl.title">Reinforcement Learning</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.rl.description">Gymnasium trading environments with Stable-Baselines3 (PPO / SAC / DQN), covering the full train → backtest → evaluate → retrain lifecycle.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.ai.title">AI Strategy Generation</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.ai.description">
-            AI-powered strategy generation with thinking chain support. Automatically generate, validate, and optimize trading strategies using large language models.
-          </p>
         </div>
 
-        <!-- Feature 3: Real-time Market Data -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="radio" class="w-6 h-6 text-green-500"></i>
+        <!-- 组三：交易与数据生态 -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-green-600 dark:text-green-400 mb-6 flex items-center gap-2">
+            <span class="text-base">🌐</span><span data-i18n="features.group.eco">Trading &amp; Data Ecosystem</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="globe" class="w-6 h-6 text-blue-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.exchange.title">Unified Exchange Access</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.exchange.description">Binance (live / paper / archive) and OKX adapters, with WebSocket real-time streaming, automatic reconnection, and persistence.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="database" class="w-6 h-6 text-green-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.data.title">DuckDB + Parquet Data Stack</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.data.description">Columnar storage for efficient reads and writes, plus data quality checks, automatic gap recovery, and archive repair for corrupted files.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="activity" class="w-6 h-6 text-emerald-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.worker.title">Worker Live Execution</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.worker.description">Strategy live loops, paper trading, and engine deployment with full lifecycle management.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.realtime.title">Real-time Market Data</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.realtime.description">
-            WebSocket-based real-time data streaming with automatic reconnection. Support for multiple data sources and historical data management.
-          </p>
         </div>
 
-        <!-- Feature 4: Unified Exchange Trading -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="globe" class="w-6 h-6 text-blue-500"></i>
+        <!-- 组四：平台工程 -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400 mb-6 flex items-center gap-2">
+            <span class="text-base">🛡️</span><span data-i18n="features.group.platform">Platform Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="puzzle" class="w-6 h-6 text-amber-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.plugin.title">Plugin System</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.plugin.description">Inter-plugin communication through a unified event bus and isolation in a security sandbox. Package and install plugins with one quantcell plugin command.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="shield-check" class="w-6 h-6 text-red-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.risk.title">Risk Control &amp; Credential Security</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.risk.description">Exchange API keys are encrypted at rest and managed via quantcell account, with a risk engine for monitoring and unified JWT authentication.</p>
+            </div>
+            <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center mb-4">
+                <i data-lucide="monitor-smartphone" class="w-6 h-6 text-sky-500"></i>
+              </div>
+              <h4 class="text-lg font-semibold mb-2" data-i18n="features.frontend.title">Modern Frontend &amp; Visualization</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.frontend.description">React 18 + TypeScript + Vite 7 + Ant Design 6, KLineCharts/ECharts, the Monaco editor, backtest replay, and built-in zh/en i18n.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.exchanges.title">Unified Exchange Trading</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.exchanges.description">
-            Unified API for Binance, OKX, and more. Seamlessly switch between exchanges with consistent interface for both backtesting and live trading.
-          </p>
-        </div>
-
-        <!-- Feature 5: Advanced Visualization -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="bar-chart-3" class="w-6 h-6 text-yellow-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.visualization.title">Advanced Visualization</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.visualization.description">
-            Professional K-line charts with technical indicators, trade markers, backtest replay, and comprehensive performance analysis dashboards.
-          </p>
-        </div>
-
-        <!-- Feature 6: Risk Management -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="shield" class="w-6 h-6 text-red-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.risk.title">Risk Management</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.risk.description">
-            Comprehensive risk controls with position sizing, stop-loss, take-profit, and portfolio-level risk monitoring for safer trading.
-          </p>
-        </div>
-
-        <!-- Feature 7: Task Management -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="list-todo" class="w-6 h-6 text-cyan-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.task.title">Task Management</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.task.description">
-            Complete backtest task lifecycle management. Create, execute, monitor, and manage backtest tasks with real-time status updates and detailed result tracking.
-          </p>
-        </div>
-
-        <!-- Feature 8: Strategy Management -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="folder-open" class="w-6 h-6 text-orange-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.strategy.title">Strategy Management</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.strategy.description">
-            Dynamic strategy loading and management. Upload, list, load, and validate strategies with automatic parameter configuration and security validation.
-          </p>
-        </div>
-
-        <!-- Feature 9: Backtest Replay -->
-        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4">
-            <i data-lucide="play" class="w-6 h-6 text-pink-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2" data-i18n="features.replay.title">Backtest Replay</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.replay.description">
-            Professional backtest replay with play, pause, speed control, and progress adjustment. Visualize every trade signal with precise timing and detailed analysis.
-          </p>
         </div>
       </div>
     </div>
