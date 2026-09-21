@@ -196,11 +196,12 @@
         </a>
         
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-6">
           <a href="#features" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.features">Features</a>
           <a href="#architecture" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.architecture">Architecture</a>
-          <a href="https://demo.quantcell.top/" target="_blank" rel="noopener" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.demo">Demo</a>
-          <a href="#docs" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.docs">Documentation</a>
+          <a href="#quick-start" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.quickstart">Quick Start</a>
+          <a href="https://demo.quantcell.top/chart" target="_blank" rel="noopener" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.demo">Live Demo</a>
+          <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.docs">Docs</a>
         </div>
         
         <!-- Right Actions -->
@@ -235,10 +236,11 @@
       <div class="px-4 py-3 space-y-2">
         <a href="#features" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.features">Features</a>
         <a href="#architecture" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.architecture">Architecture</a>
-        <a href="https://demo.quantcell.top/" target="_blank" rel="noopener" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.demo">Demo</a>
-        <a href="#docs" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.docs">Documentation</a>
+        <a href="#quick-start" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.quickstart">Quick Start</a>
+        <a href="https://demo.quantcell.top/chart" target="_blank" rel="noopener" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.demo">Live Demo</a>
+        <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.docs">Docs</a>
         <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
-          <a href="https://github.com/peng wo w/quantcell" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 text-white">
+          <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900">
             <i data-lucide="github" class="w-4 h-4"></i>
             <span>GitHub</span>
           </a>
@@ -261,20 +263,20 @@
         <div class="space-y-8">
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium">
             <i data-lucide="sparkles" class="w-4 h-4"></i>
-            <span data-i18n="hero.badge">Open Source Quantitative Trading Platform</span>
+            <span data-i18n="hero.badge">AI-Native Quantitative Trading System</span>
           </div>
-          
+
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight pb-2">
-            <span data-i18n="hero.title1">Build, Test, and Deploy</span>
-            <span class="text-gradient block mt-2 pb-1" data-i18n="hero.title2">Trading Strategies</span>
+            <span data-i18n="hero.title1">Build, Backtest &amp; Deploy</span>
+            <span class="text-gradient block mt-2 pb-1" data-i18n="hero.title2">Quant Strategies with Natural Language</span>
           </h1>
-          
+
           <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl" data-i18n="hero.description">
-            QuantCell is a professional quantitative trading platform with a fully refactored trading engine. Write strategies in pure Python, run backtests across multiple engines seamlessly, manage tasks efficiently, and visualize results with professional K-line charts and backtest replay.
+            QuantCell is an AI-native quantitative trading system powered by the axon-quant Rust engine, with FastAPI and React/TypeScript. Describe strategies in natural language — AI generates the code, passes safety checks, and completes backtest verification, from idea to live deployment.
           </p>
-          
+
           <div class="flex flex-wrap gap-4">
-            <a href="#getting-started" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors glow">
+            <a href="#quick-start" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors glow">
               <i data-lucide="rocket" class="w-5 h-5"></i>
               <span data-i18n="hero.getStarted">Get Started</span>
             </a>
@@ -283,24 +285,6 @@
               <span data-i18n="hero.viewOnGitHub">View on GitHub</span>
             </a>
           </div>
-          
-          <!-- Stats -->
-          <!-- 
-          <div class="flex flex-wrap gap-8 pt-4">
-            <div>
-              <div class="text-2xl font-bold text-slate-900 dark:text-white">10k+</div>
-              <div class="text-sm text-slate-500 dark:text-slate-400" data-i18n="hero.stats.downloads">Downloads</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-slate-900 dark:text-white">500+</div>
-              <div class="text-sm text-slate-500 dark:text-slate-400" data-i18n="hero.stats.stars">GitHub Stars</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-slate-900 dark:text-white">50+</div>
-              <div class="text-sm text-slate-500 dark:text-slate-400" data-i18n="hero.stats.contributors">Contributors</div>
-            </div>
-          </div>
-          -->
         </div>
         
         <!-- Hero Visual -->
@@ -311,35 +295,12 @@
               <div class="code-dot bg-red-500"></div>
               <div class="code-dot bg-yellow-500"></div>
               <div class="code-dot bg-green-500"></div>
-              <span class="ml-4 text-sm text-slate-400">sma_cross_simple.py</span>
+              <span class="ml-4 text-sm text-slate-400 font-mono">terminal</span>
             </div>
             <div class="code-content text-slate-300">
-              <pre><span class="text-purple-400">from</span> strategy.core <span class="text-purple-400">import</span> Strategy, StrategyConfig
-
-<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossConfig</span>(<span class="text-yellow-300">StrategyConfig</span>):
-    <span class="text-slate-500">"""SMA Cross Strategy Configuration"""</span>
-    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>):
-        <span class="text-orange-300">self</span>.fast_period = <span class="text-green-300">10</span>
-        <span class="text-orange-300">self</span>.slow_period = <span class="text-green-300">30</span>
-
-<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossStrategy</span>(<span class="text-yellow-300">Strategy</span>):
-    <span class="text-slate-500">"""Dual SMA Cross Strategy"""</span>
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">on_bar</span>(<span class="text-orange-300">self</span>, bar):
-        <span class="text-slate-500"># Update price history</span>
-        <span class="text-orange-300">self</span>.prices.append(bar.close)
-        
-        <span class="text-slate-500"># Calculate SMA</span>
-        fast_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>.fast_period)
-        slow_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>.slow_period)
-        
-        <span class="text-slate-500"># Golden cross: buy signal</span>
-        <span class="text-purple-400">if</span> fast_sma > slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_flat():
-            <span class="text-orange-300">self</span>.buy(<span class="text-orange-300">self</span>.config.trade_size)
-        
-        <span class="text-slate-500"># Death cross: sell signal</span>
-        <span class="text-purple-400">elif</span> fast_sma < slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_long():
-            <span class="text-orange-300">self</span>.sell(<span class="text-orange-300">self</span>.config.trade_size)</pre>
+              <pre><span class="text-slate-500">$ </span>quantcell strategy generate \
+    --requirement <span class="text-green-300">"双均线金叉买入、死叉卖出"</span> \
+    --name <span class="text-green-300">dual_ma</span></pre>
             </div>
           </div>
           </div>
@@ -347,24 +308,24 @@
           <!-- Floating Elements -->
           <div class="absolute -top-4 -right-4 p-4 rounded-xl glass shadow-lg animate-float hidden sm:block">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
-              </div>
-              <div>
-                <div class="text-sm font-medium text-slate-900 dark:text-white" data-i18n="hero.stats.backtestReturn">Backtest Return</div>
-                <div class="text-lg font-bold text-green-500">+32.7%</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="absolute -bottom-4 -left-4 p-4 rounded-xl glass shadow-lg animate-float hidden sm:block" style="animation-delay: 2s;">
-            <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-lg bg-primary-500/20 flex items-center justify-center">
                 <i data-lucide="zap" class="w-5 h-5 text-primary-500"></i>
               </div>
               <div>
-                <div class="text-sm font-medium text-slate-900 dark:text-white" data-i18n="hero.stats.executionSpeed">Execution Speed</div>
-                <div class="text-lg font-bold text-primary-500">&lt; 10ms</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400" data-i18n="hero.badge.rust.title">Rust Core Engine</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="hero.badge.rust.value">axon-quant 0.14.5</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-4 -left-4 p-4 rounded-xl glass shadow-lg animate-float hidden sm:block" style="animation-delay: 2s;">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/20 flex items-center justify-center">
+                <i data-lucide="terminal" class="w-5 h-5 text-accent-500"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500 dark:text-slate-400" data-i18n="hero.badge.cli.title">CLI Toolkit</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="hero.badge.cli.value">13 Command Groups</div>
               </div>
             </div>
           </div>
