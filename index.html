@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuantCell - Professional Quantitative Trading Platform</title>
-  <meta name="description" content="QuantCell is an open-source quantitative trading platform with strategy backtesting, real-time data, and multi-exchange support.">
+  <title>QuantCell - AI-Native Quantitative Trading System</title>
+  <meta name="description" content="QuantCell is an AI-native quantitative trading system powered by the axon-quant Rust engine. Generate strategies from natural language, run event-driven backtests, train RL agents, and deploy to live trading.">
   
   <!-- Favicon - SVG Logo -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
-  <link rel="alternate icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="alternate icon" type="image/x-icon" href="assets/images/logo.ico">
+
+  <!-- 语言早检测：首次绘制前设置 <html lang>，避免中文用户首屏英文闪烁（与 i18n.js 检测规则一致） -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('lang');
+      var lang = saved || ((navigator.language || '').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
   
   <!-- Tailwind CSS - Local -->
   <script src="assets/css/tailwindcss.min.js"></script>
@@ -261,7 +270,7 @@
           </h1>
           
           <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl" data-i18n="hero.description">
-            QuantCell is a professional quantitative trading platform with high-performance backtesting, real-time market data, AI-powered strategy generation, and unified multi-exchange trading. Write strategies in pure Python with an intuitive API, run lightning-fast backtests, and deploy to production seamlessly.
+            QuantCell is a professional quantitative trading platform with a fully refactored trading engine. Write strategies in pure Python, run backtests across multiple engines seamlessly, manage tasks efficiently, and visualize results with professional K-line charts and backtest replay.
           </p>
           
           <div class="flex flex-wrap gap-4">
@@ -384,7 +393,7 @@
           </div>
           <h3 class="text-xl font-semibold mb-2" data-i18n="features.backtesting.title">High-Performance Backtesting</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.backtesting.description">
-            Self-developed high-performance backtesting engine supporting both event-driven and vectorized execution modes. Intelligent caching and parallel processing for maximum speed.
+            Fully refactored high-performance backtesting engine supporting both event-driven and vectorized execution modes. Intelligent caching and parallel processing for maximum speed.
           </p>
         </div>
 
@@ -440,6 +449,39 @@
           <h3 class="text-xl font-semibold mb-2" data-i18n="features.risk.title">Risk Management</h3>
           <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.risk.description">
             Comprehensive risk controls with position sizing, stop-loss, take-profit, and portfolio-level risk monitoring for safer trading.
+          </p>
+        </div>
+
+        <!-- Feature 7: Task Management -->
+        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="list-todo" class="w-6 h-6 text-cyan-500"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.task.title">Task Management</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.task.description">
+            Complete backtest task lifecycle management. Create, execute, monitor, and manage backtest tasks with real-time status updates and detailed result tracking.
+          </p>
+        </div>
+
+        <!-- Feature 8: Strategy Management -->
+        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="folder-open" class="w-6 h-6 text-orange-500"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.strategy.title">Strategy Management</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.strategy.description">
+            Dynamic strategy loading and management. Upload, list, load, and validate strategies with automatic parameter configuration and security validation.
+          </p>
+        </div>
+
+        <!-- Feature 9: Backtest Replay -->
+        <div class="feature-card p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4">
+            <i data-lucide="play" class="w-6 h-6 text-pink-500"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2" data-i18n="features.replay.title">Backtest Replay</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="features.replay.description">
+            Professional backtest replay with play, pause, speed control, and progress adjustment. Visualize every trade signal with precise timing and detailed analysis.
           </p>
         </div>
       </div>
@@ -528,7 +570,7 @@
         <div class="order-1 lg:order-2 space-y-6">
           <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="architecture.title">Modern Architecture</h2>
           <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="architecture.description">
-            Clean separation of concerns with adapter pattern design. Use the same strategy code for both backtesting and live trading across multiple exchanges.
+            Refactored architecture with StrategyCore, StrategyAdapter, and StrategyRunner pattern. Strategy logic separated from execution engines for maximum flexibility.
           </p>
 
           <div class="space-y-4">
@@ -537,9 +579,9 @@
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">Unified Execution</h4>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.adapter.title">StrategyCore Pattern</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.adapter.description">
-                  Strategy core separated from execution engines. Seamlessly switch between backtesting and live trading with the same strategy code.
+                  Strategy logic separated from execution engines. Define indicators, signals, and position management in StrategyCore, run on any engine.
                 </p>
               </div>
             </div>
@@ -549,9 +591,9 @@
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.performance.title">High Performance</h4>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.performance.title">Multi-Engine Support</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.performance.description">
-                  Self-developed execution engine with intelligent caching and parallel processing for lightning-fast backtests and real-time trading.
+                  Adapter pattern enables seamless switching between multiple backtesting engines. Single strategy code runs everywhere.
                 </p>
               </div>
             </div>
@@ -561,9 +603,9 @@
                 <i data-lucide="check" class="w-4 h-4 text-primary-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold mb-1" data-i18n="architecture.points.extensible.title">AI-Powered Extension</h4>
+                <h4 class="font-semibold mb-1" data-i18n="architecture.points.extensible.title">Rich Hook System</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="architecture.points.extensible.description">
-                  Rich hook functions for customization plus AI strategy generation with thinking chain support for automated strategy development.
+                  Pre/post processing hooks for data, signals, and positions. Customize strategy behavior without modifying core code.
                 </p>
               </div>
             </div>
@@ -657,7 +699,7 @@
               <h3 class="text-lg font-semibold" data-i18n="code.features.optimization.title">Built-in Optimization</h3>
             </div>
             <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="code.features.optimization.description">
-              Automatic caching, parallel execution, and Numba JIT compilation for maximum performance.
+              Automatic caching, parallel execution, and intelligent optimization for maximum performance.
             </p>
           </div>
         </div>
