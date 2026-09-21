@@ -603,93 +603,81 @@
     </div>
   </section>
 
-  <!-- Code Example Section -->
-  <section class="py-20 lg:py-32">
+  <!-- Quick Start Section -->
+  <section id="quick-start" class="py-20 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="code.title">Simple Yet Powerful</h2>
-        <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="code.subtitle">
-          Write your strategy in pure Python. QuantCell handles the complexity.
-        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="quickstart.title">Get Running in Minutes</h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="quickstart.subtitle">Three steps from clone to your first AI-generated, backtested strategy</p>
       </div>
-      
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Code Example -->
-        <div class="code-block">
-          <div class="code-header">
-            <div class="code-dot bg-red-500"></div>
-            <div class="code-dot bg-yellow-500"></div>
-            <div class="code-dot bg-green-500"></div>
-            <span class="ml-4 text-sm text-slate-400">sma_cross_simple.py</span>
+
+      <div class="max-w-3xl mx-auto space-y-6">
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-8 h-8 rounded-full bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <h3 class="text-lg font-semibold" data-i18n="quickstart.step1.title">Install with one command</h3>
           </div>
-          <div class="code-content text-slate-300">
-            <pre><span class="text-purple-400">from</span> strategy.core <span class="text-purple-400">import</span> Strategy, StrategyConfig
-
-<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossConfig</span>(<span class="text-yellow-300">StrategyConfig</span>):
-    <span class="text-slate-500">"""SMA Cross Strategy Config"""</span>
-    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>, instrument_ids, bar_types):
-        <span class="text-orange-300">super</span>().<span class="text-blue-400">__init__</span>(instrument_ids, bar_types)
-        <span class="text-orange-300">self</span>.fast_period = <span class="text-green-300">10</span>
-        <span class="text-orange-300">self</span>.slow_period = <span class="text-green-300">30</span>
-
-<span class="text-purple-400">class</span> <span class="text-yellow-300">SmaCrossStrategy</span>(<span class="text-yellow-300">Strategy</span>):
-    <span class="text-slate-500">"""Dual SMA Cross Strategy"""</span>
-    
-    <span class="text-purple-400">def</span> <span class="text-blue-400">on_bar</span>(<span class="text-orange-300">self</span>, bar):
-        <span class="text-slate-500"># Update price history</span>
-        <span class="text-orange-300">self</span>.prices.append(bar.close)
-        
-        <span class="text-slate-500"># Calculate SMA values</span>
-        fast_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>._config.fast_period)
-        slow_sma = <span class="text-orange-300">self</span>.calc_sma(<span class="text-orange-300">self</span>._config.slow_period)
-        
-        <span class="text-slate-500"># Golden cross: buy signal</span>
-        <span class="text-purple-400">if</span> fast_sma > slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_flat():
-            <span class="text-orange-300">self</span>.buy(bar.instrument_id, <span class="text-orange-300">self</span>._config.trade_size)
-        
-        <span class="text-slate-500"># Death cross: sell signal</span>
-        <span class="text-purple-400">elif</span> fast_sma < slow_sma <span class="text-purple-400">and</span> <span class="text-orange-300">self</span>.is_long():
-            <span class="text-orange-300">self</span>.sell(bar.instrument_id, <span class="text-orange-300">self</span>._config.trade_size)</pre>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step1.description">Clone the repo and run the installer. It provisions the uv and bun toolchains plus the frontend and backend environments (--minimal / --full / --extra).</p>
+          <div class="code-block ml-11">
+            <div class="code-content">
+              <pre>git clone https://github.com/pengwow/quantcell.git
+cd quantcell
+bash install.sh   <span class="text-slate-500"># --minimal / --full / --extra，自动配置 uv + bun</span></pre>
+            </div>
           </div>
         </div>
-        
-        <!-- Features List -->
-        <div class="space-y-6">
-          <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                <i data-lucide="zap" class="w-5 h-5 text-green-500"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="code.features.intuitive.title">Intuitive API</h3>
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="code.features.intuitive.description">
-              Clean, Pythonic interface that feels natural to quantitative traders and developers alike.
-            </p>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-8 h-8 rounded-full bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <h3 class="text-lg font-semibold" data-i18n="quickstart.step2.title">Generate and backtest via CLI</h3>
           </div>
-          
-          <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                <i data-lucide="git-branch" class="w-5 h-5 text-blue-500"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="code.features.hooks.title">Rich Hook System</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step2.description">Turn a natural-language requirement into a strategy, then run an event-driven backtest with a single command.</p>
+          <div class="code-block ml-11">
+            <div class="code-content">
+              <pre>quantcell strategy generate --requirement <span class="text-green-300">"双均线金叉买入"</span> --name dual_ma
+quantcell backtest run --symbols BTCUSDT --timeframes 1h --initial-capital 100000</pre>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="code.features.hooks.description">
-              Pre/post processing hooks for data, signals, and positions. Customize without modifying core code.
-            </p>
           </div>
-          
-          <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                <i data-lucide="gauge" class="w-5 h-5 text-purple-500"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="code.features.optimization.title">Built-in Optimization</h3>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-8 h-8 rounded-full bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <h3 class="text-lg font-semibold" data-i18n="quickstart.step3.title">Write strategies in Python</h3>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 ml-11" data-i18n="quickstart.step3.description">Receive bars in on_bar and return a unified axon_quant Action. The same code runs in backtests and live trading.</p>
+          <div class="code-block ml-11">
+            <div class="code-content">
+<pre><span class="text-purple-400">from</span> axon_quant <span class="text-purple-400">import</span> Action, ActionType
+
+<span class="text-purple-400">class</span> <span class="text-yellow-300">DualMA</span>:
+    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>, fast=<span class="text-green-300">10</span>, slow=<span class="text-green-300">30</span>):
+        <span class="text-orange-300">self</span>.fast, <span class="text-orange-300">self</span>.slow = fast, slow
+        <span class="text-orange-300">self</span>.closes = []
+
+    <span class="text-purple-400">def</span> <span class="text-blue-400">on_bar</span>(<span class="text-orange-300">self</span>, bar: dict) -> Action:
+        <span class="text-orange-300">self</span>.closes.append(bar[<span class="text-green-300">"close"</span>])
+        <span class="text-purple-400">if</span> len(<span class="text-orange-300">self</span>.closes) &lt; <span class="text-orange-300">self</span>.slow:
+            <span class="text-purple-400">return</span> Action(ActionType.Hold, <span class="text-green-300">0.0</span>, <span class="text-green-300">0.0</span>, <span class="text-green-300">"dual_ma"</span>, <span class="text-green-300">0</span>)
+        fast_ma = sum(<span class="text-orange-300">self</span>.closes[-<span class="text-orange-300">self</span>.fast:]) / <span class="text-orange-300">self</span>.fast
+        slow_ma = sum(<span class="text-orange-300">self</span>.closes[-<span class="text-orange-300">self</span>.slow:]) / <span class="text-orange-300">self</span>.slow
+        <span class="text-purple-400">if</span> fast_ma > slow_ma:
+            <span class="text-purple-400">return</span> Action(ActionType.Buy, <span class="text-green-300">0.8</span>, <span class="text-green-300">0.1</span>, <span class="text-green-300">"dual_ma"</span>, <span class="text-green-300">0</span>)
+        <span class="text-purple-400">return</span> Action(ActionType.Hold, <span class="text-green-300">0.0</span>, <span class="text-green-300">0.0</span>, <span class="text-green-300">"dual_ma"</span>, <span class="text-green-300">0</span>)</pre>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="code.features.optimization.description">
-              Automatic caching, parallel execution, and intelligent optimization for maximum performance.
-            </p>
           </div>
+        </div>
+
+        <!-- 事实标签 -->
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <span class="px-3 py-1.5 rounded-full glass border border-slate-200 dark:border-slate-800 text-xs font-medium" data-i18n="quickstart.fact.cli">13 CLI Command Groups</span>
+          <span class="px-3 py-1.5 rounded-full glass border border-slate-200 dark:border-slate-800 text-xs font-medium" data-i18n="quickstart.fact.toolchain">uv / bun toolchains</span>
+          <span class="px-3 py-1.5 rounded-full glass border border-slate-200 dark:border-slate-800 text-xs font-medium" data-i18n="quickstart.fact.swagger">Swagger /docs</span>
+          <span class="px-3 py-1.5 rounded-full glass border border-slate-200 dark:border-slate-800 text-xs font-medium" data-i18n="quickstart.fact.pytest">pytest 9</span>
         </div>
       </div>
     </div>
