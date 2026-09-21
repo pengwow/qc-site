@@ -19,16 +19,16 @@
     })();
   </script>
   
-  <!-- Tailwind CSS - Local -->
+  <!-- Tailwind CSS - Local（Play CDN：加载后通过 window.tailwind 的 Proxy 感知 config 赋值并重编译） -->
   <script src="assets/css/tailwindcss.min.js"></script>
-  
+
   <!-- Local Fonts -->
   <link rel="stylesheet" href="assets/css/fonts.css">
-  
+
   <!-- Lucide Icons - Local -->
   <script src="assets/js/lucide.min.js"></script>
-  
-  <!-- Tailwind Config -->
+
+  <!-- Tailwind Config：必须在 CDN 之后对 tailwind.config 整体赋值，Proxy set trap 会触发重新编译 -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -87,7 +87,7 @@
       },
     }
   </script>
-  
+
   <style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
