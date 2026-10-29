@@ -96,7 +96,7 @@
 </head>
 <body class="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
 
-  <!-- Navigation：下载页简版导航（锚点回跳首页对应区块） -->
+  <!-- Navigation：与首页一致的完整导航（Download 为当前页，锚点回跳首页对应区块） -->
   <nav class="fixed top-0 left-0 right-0 z-50 glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -104,22 +104,57 @@
           <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8" data-i18n-attr="alt:common.logoAlt">
           <span class="text-xl font-bold text-primary-500">QuantCell</span>
         </a>
+
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-6">
           <a href="/#features" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.features">Features</a>
+          <a href="/#architecture" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.architecture">Architecture</a>
           <a href="/#quick-start" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.quickstart">Quick Start</a>
-          <span class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-i18n="nav.download">Download</span>
+          <a href="https://demo.quantcell.top/chart" target="_blank" rel="noopener" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.demo">Live Demo</a>
+          <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.docs">Docs</a>
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-400" data-i18n="nav.download">Download</span>
         </div>
+
+        <!-- Right Actions -->
         <div class="flex items-center gap-3">
+          <!-- Language Toggle -->
           <button id="langToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Language" data-i18n-attr="aria-label:nav.toggleLang">
             <span class="text-sm font-medium">中文</span>
           </button>
+
+          <!-- Theme Toggle -->
           <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme" data-i18n-attr="aria-label:nav.toggleTheme">
             <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
             <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
           </button>
-          <a href="https://github.com/pengwow/QuantCell" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-colors">
+
+          <!-- GitHub Link -->
+          <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-colors">
             <i data-lucide="github" class="w-4 h-4"></i>
             <span class="text-sm font-medium">GitHub</span>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Menu" data-i18n-attr="aria-label:nav.toggleMenu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-slate-200 dark:border-slate-800">
+      <div class="px-4 py-3 space-y-2">
+        <a href="/#features" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.features">Features</a>
+        <a href="/#architecture" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.architecture">Architecture</a>
+        <a href="/#quick-start" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.quickstart">Quick Start</a>
+        <a href="https://demo.quantcell.top/chart" target="_blank" rel="noopener" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.demo">Live Demo</a>
+        <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="block px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" data-i18n="nav.docs">Docs</a>
+        <span class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400" data-i18n="nav.download">Download</span>
+        <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
+          <a href="https://github.com/pengwow/quantcell" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900">
+            <i data-lucide="github" class="w-4 h-4"></i>
+            <span>GitHub</span>
           </a>
         </div>
       </div>
