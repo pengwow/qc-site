@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download QuantCell Desktop</title>
+  <meta name="description" content="Download QuantCell Desktop for macOS, Windows, and Linux. Automatic updates are built in — no need to re-install for new releases.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="alternate icon" type="image/x-icon" href="assets/images/logo.ico">
+
+  <!-- 语言早检测：首次绘制前设置 <html lang>（与 index.html 同规则） -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('lang');
+      var lang = saved || ((navigator.language || '').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
+
+  <script src="assets/css/tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <script src="assets/js/lucide.min.js"></script>
+
+  <!-- Tailwind Config：与 index.html 完全一致，保证视觉统一 -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            primary: {
+              50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+              400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1',
+              800: '#075985', 900: '#0c4a6e', 950: '#082f49',
+            },
+            accent: {
+              50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+              400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+              800: '#5b21b6', 900: '#4c1d95',
+            },
+            success: '#10b981', warning: '#f59e0b', danger: '#ef4444',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'gradient': 'gradient 8s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #0ea5e9 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient 8s linear infinite;
+    }
+    .glow { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3), 0 0 40px rgba(139, 92, 246, 0.2); }
+    .feature-card { transition: all 0.3s ease; }
+    .feature-card:hover { transform: translateY(-8px); }
+    body, .glass { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+  </style>
+</head>
+<body class="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Navigation：下载页简版导航（锚点回跳首页对应区块） -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2">
+          <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-8 h-8" data-i18n-attr="alt:common.logoAlt">
+          <span class="text-xl font-bold text-primary-500">QuantCell</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="/#features" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.features">Features</a>
+          <a href="/#quick-start" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400 transition-colors" data-i18n="nav.quickstart">Quick Start</a>
+          <span class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-i18n="nav.download">Download</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="langToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Language" data-i18n-attr="aria-label:nav.toggleLang">
+            <span class="text-sm font-medium">中文</span>
+          </button>
+          <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme" data-i18n-attr="aria-label:nav.toggleTheme">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+          </button>
+          <a href="https://github.com/pengwow/QuantCell" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-colors">
+            <i data-lucide="github" class="w-4 h-4"></i>
+            <span class="text-sm font-medium">GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-12 overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold leading-tight pb-2">
+        <span data-i18n="download.title">Download QuantCell Desktop</span>
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mt-4" data-i18n="download.subtitle">
+        AI-native quant trading with the Rust core engine. Desktop builds ship the backend and frontend together, with automatic in-app updates.
+      </p>
+      <!-- 版本与获取状态：由 JS 填充（状态文案随语言切换手动处理，不走 data-i18n 避免渲染竞争） -->
+      <div id="versionBadge" class="hidden inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium font-mono mt-6"></div>
+      <p id="dlStatus" class="text-sm text-slate-500 dark:text-slate-400 mt-4"></p>
+    </div>
+  </section>
+
+  <!-- 平台下载卡片区：数据驱动渲染（latest-downloads.json） -->
+  <section class="pb-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="dlGrid" class="grid sm:grid-cols-2 gap-6">
+        <!-- JS renders platform cards -->
+      </div>
+      <p id="autoDetectNote" class="hidden text-center text-sm text-slate-500 dark:text-slate-400 mt-8" data-i18n="download.autoDetectNote"></p>
+    </div>
+  </section>
+
+  <!-- Footer 简版 -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <img src="assets/images/logo.svg" alt="QuantCell Logo" class="w-6 h-6" data-i18n-attr="alt:common.logoAlt">
+      <p class="text-sm text-slate-500 dark:text-slate-400">© 2026 QuantCell · Apache License 2.0</p>
+      <a href="https://github.com/pengwow/QuantCell/issues" target="_blank" rel="noopener" class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="download.reportIssue">Report an issue</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module">
+    // 下载页数据源：与桌面端升级镜像同一目录（CI rsync 同步）。
+    // 基址改动需与 desktop/src-tauri/src/update.rs 的镜像契约保持同一台站点。
+    import { applyI18nIfReady } from '/assets/js/i18n.js';
+
+    const MIRROR_BASE = 'https://quantcell.top/updates/mirror';
+    const GH_LATEST = 'https://github.com/pengwow/QuantCell/releases/latest';
+
+    /** 卡片固定顺序与文案键；entries 来自 latest-downloads.json（同名文件） */
+    const PLATFORMS = [
+      { id: 'darwin-aarch64', icon: 'laptop', alt: 'dmg' },
+      { id: 'darwin-x86_64', icon: 'laptop', alt: 'dmg' },
+      { id: 'windows-x86_64', icon: 'monitor', alt: 'exe / msi' },
+      { id: 'linux-x86_64', icon: 'terminal', alt: 'AppImage / deb' },
+    ];
+
+    function isZh() {
+      return (localStorage.getItem('lang') || 'en').startsWith('zh');
+    }
+
+    /** 启发式平台检测；mac 默认按 Apple Silicon，再经 userAgentData 异步修正 Intel */
+    function detectTarget() {
+      const ua = navigator.userAgent;
+      if (/Windows/i.test(ua)) return Promise.resolve('windows-x86_64');
+      if (/Mac|iPhone|iPad/i.test(ua)) {
+        const h = navigator.userAgentData?.getHighEntropyValue;
+        if (!h) return Promise.resolve('darwin-aarch64');
+        return h.call(navigator.userAgentData, ['architecture'])
+          .then(({ architecture }) => (architecture && architecture !== 'arm' ? 'darwin-x86_64' : 'darwin-aarch64'))
+          .catch(() => 'darwin-aarch64');
+      }
+      if (/Linux/i.test(ua) && !/Android|cros/i.test(ua)) return Promise.resolve('linux-x86_64');
+      return Promise.resolve(null);
+    }
+
+    function fmtSize(bytes) {
+      if (!bytes) return '';
+      return ` · ${(bytes / 1048576).toFixed(1)} MB`;
+    }
+
+    function cardHtml(platform, entries, detected) {
+      const [primary, ...rest] = entries;
+      const badgeId = `dl-group-${platform.id}`;
+      const primaryBtn = primary ? `
+        <a href="${primary.url}" class="download-btn inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-xl bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download <span class="font-mono">${primary.kind}</span></span>
+        </a>` : '';
+      const altBtns = rest.map((e) => `
+        <a href="${e.url}" class="download-alt inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-sm font-medium hover:border-primary-500 hover:text-primary-600 dark:hover:border-primary-400 dark:hover:text-primary-400 transition-colors">
+          <i data-lucide="file-down" class="w-3.5 h-3.5"></i><span class="font-mono">${e.kind}</span>
+        </a>`).join('');
+      const altRow = altBtns ? `<div class="flex flex-wrap gap-2 mt-3">${altBtns}</div>` : '';
+      return `
+        <div id="${badgeId}" class="feature-card p-6 rounded-2xl glass ${detected === platform.id ? 'ring-2 ring-primary-500' : ''}">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-xl bg-primary-500/10 flex items-center justify-center">
+              <i data-lucide="${platform.icon}" class="w-5 h-5 text-primary-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold" data-i18n="download.${platform.id}.title"></h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="download.${platform.id}.desc"></p>
+            </div>
+          </div>
+          ${primary?.file ? `<p class="text-xs text-slate-400 dark:text-slate-500 font-mono truncate mb-3" title="${primary.file}">${primary.file}${fmtSize(primary.size)}</p>` : ''}
+          ${primaryBtn}
+          ${altRow}
+        </div>`;
+    }
+
+    let lastStatus = 'checking';
+
+    function setStatus(statusKey, extra) {
+      lastStatus = statusKey; // 语言切换时按当前语言重放
+      const el = document.getElementById('dlStatus');
+      const text = {
+        checking: { zh: '正在获取最新版本…', en: 'Fetching the latest version…' },
+        latest: { zh: '最新版本已就绪，点击对应平台卡片即可下载。', en: 'Latest build is ready — pick your platform below.' },
+        fallback: { zh: '未能获取版本信息，可前往 GitHub Releases 手动下载：', en: 'Could not load version info. You can download manually from GitHub Releases:' },
+      }[statusKey];
+      el.innerHTML = text[isZh() ? 'zh' : 'en'];
+      if (statusKey === 'fallback') {
+        const a = document.createElement('a');
+        a.href = GH_LATEST;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'text-primary-600 dark:text-primary-400 font-medium hover:underline ml-1';
+        a.textContent = 'GitHub Releases →';
+        el.appendChild(a);
+      }
+      if (extra) {
+        const span = document.createElement('span');
+        span.className = 'font-mono text-primary-600 dark:text-primary-400 ml-1';
+        span.textContent = extra;
+        el.prepend(span);
+      }
+    }
+
+    // i18n.js 每次 updateLanguage 后广播 i18n:applied：
+    // 这里重放状态行（状态行是手动双语，不走 data-i18n）。
+    // 注意：监听器内不能再调 applyI18nIfReady——它内部 updateLanguage 会再次广播，形成无限递归。
+    document.addEventListener('i18n:applied', () => setStatus(lastStatus));
+
+    async function initDownloads() {
+      setStatus('checking');
+      const [data, detected] = await Promise.all([
+        fetch(`${MIRROR_BASE}/latest-downloads.json`, { cache: 'no-cache' })
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.statusText))))
+          .catch(() => null),
+        detectTarget(),
+      ]);
+
+      const grid = document.getElementById('dlGrid');
+      const entries = data?.downloads && Object.keys(data.downloads).length ? data.downloads : null;
+      grid.innerHTML = PLATFORMS
+        .filter((p) => !entries || entries[p.id]?.length)
+        .map((p) => cardHtml(p, entries?.[p.id] ?? [], detected))
+        .join('');
+      if (entries) {
+        document.getElementById('versionBadge').classList.remove('hidden');
+        document.getElementById('versionBadge').textContent = `v${data.version}`;
+      }
+      setStatus(entries && grid.innerHTML ? 'latest' : 'fallback');
+      if (detected && grid.innerHTML) {
+        // 平台高亮提示在成功与兜底分支都生效（兜底态卡片虽无按钮，高亮仍有指路价值）
+        document.getElementById('autoDetectNote').classList.remove('hidden');
+      }
+      // 卡片是 JS 后渲染的：立即补一次 i18n 回填；i18n 未就绪时等它广播（once 一次性，不叠加递归）
+      if (!applyI18nIfReady()) {
+        document.addEventListener('i18n:applied', () => applyI18nIfReady(), { once: true });
+      }
+      // 卡片是 JS 后渲染的，重新让 lucide 扫描一次（幂等）
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // i18n.js 初始化时会把语言写入 localStorage；下载卡片文案走 data-i18n 静态标记，
+    // 状态行走上面的手动 i18n，两者source-of-truth一致（localStorage.lang）。
+    initDownloads();
+  </script>
+</body>
+</html>

@@ -8,6 +8,8 @@ const TRANSLATIONS_PATH = '/assets/i18n/translations.json';
 const I18N_ATTRIBUTE = 'data-i18n';
 // 属性翻译约定：data-i18n-attr="aria-label:nav.toggleTheme,alt:common.logoAlt"
 const I18N_ATTR_ATTRIBUTE = 'data-i18n-attr';
+// 模块级缓存：applyI18nIfReady 用它对动态渲染的 DOM 补一次翻译回填
+let cachedTranslations = null;
 
 /**
  * Detect language from browser settings
@@ -79,6 +81,9 @@ function updateLanguage(translations, lang) {
 
   // Update HTML lang attribute
   document.documentElement.setAttribute('lang', lang);
+
+  // 广播"文案已应用到 DOM"：后渲染组件（如下载页卡片）依赖此事件补回填
+  document.dispatchEvent(new CustomEvent('i18n:applied'));
 }
 
 /**
@@ -101,6 +106,7 @@ function toggleLanguage(translations, currentLang) {
 export async function initI18n(toggleButton) {
   // Load translations
   const translations = await loadTranslations();
+  cachedTranslations = translations;
   
   // Get and apply saved or detected language
   const lang = getSavedLanguage();
@@ -125,4 +131,14 @@ export async function initI18n(toggleButton) {
       updateToggleText();
     });
   }
+}
+
+/**
+ * 对当前 DOM 重新应用翻译，供 JS 动态渲染的内容在插入后回填文案
+ * @returns {boolean} 翻译是否已加载（false 表示 initI18n 尚未完成，应等待 i18n:applied 事件）
+ */
+export function applyI18nIfReady() {
+  if (!cachedTranslations) return false;
+  updateLanguage(cachedTranslations, document.documentElement.lang || 'en');
+  return true;
 }
